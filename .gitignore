@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# editors
+.vscode/
+.idea/
+
+# deploy
+.vercel/
+node_modules/
+
+# scratch
+*.log
