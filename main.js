@@ -6,7 +6,7 @@ const nav=document.getElementById('nav');
   links.addEventListener('click',e=>{if(e.target.tagName==='A'){links.classList.remove('open');toggle.textContent='☰';}});
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
-  const HERO="assets/hero-smoke.jpg";
+  const HERO="assets/backdrop.jpg";
   const hb=document.getElementById('herobg');
   if(HERO && !HERO.startsWith('__')){hb.style.backgroundImage=`url('${HERO}')`;hb.classList.add('loaded');}
   if(hb && !matchMedia('(prefers-reduced-motion:reduce)').matches){

@@ -10,7 +10,9 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{background:var(--green-deep);color:var(--bone);font-family:var(--sans);font-weight:400;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;letter-spacing:.01em}
+  body{background:#0a120c;color:var(--bone);font-family:var(--sans);font-weight:400;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;letter-spacing:.01em}
+  /* the muslin — Marie's green portrait backdrop, fixed behind the whole site */
+  body::before{content:"";position:fixed;inset:0;z-index:-1;background:url("assets/backdrop.jpg") center/cover no-repeat;filter:brightness(.66) saturate(.92)}
   ::selection{background:var(--gold);color:var(--green-deep)}
   img{display:block;max-width:100%}
   a{color:inherit;text-decoration:none}
@@ -63,7 +65,7 @@
   .btn-ghost{border:1px solid var(--line-strong);color:var(--bone)}.btn-ghost:hover{border-color:var(--gold);color:var(--gold-bright)}
 
   /* ---- new album feature ---- */
-  .album{padding:clamp(4rem,10vw,8rem) 0;background:var(--green);border-top:1px solid var(--line);position:relative;overflow:hidden}
+  .album{padding:clamp(4rem,10vw,8rem) 0;background:linear-gradient(180deg,rgba(19,33,24,.85),rgba(14,25,19,.9));border-top:1px solid var(--line);position:relative;overflow:hidden}
   .album-flex{display:grid;grid-template-columns:1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
   @media(min-width:900px){.album-flex{grid-template-columns:1.1fr .9fr}}
   .album h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,7vw,5.2rem);line-height:.96;letter-spacing:-.015em;margin:1.2rem 0}
@@ -78,7 +80,7 @@
   .album-visual .cap .d{font-size:.66rem;text-transform:uppercase;letter-spacing:.24em;color:var(--gold-bright);margin-top:.4rem}
 
   /* ---- tracklist ---- */
-  .tracks{padding:clamp(4.5rem,11vw,9rem) 0;background:var(--green-deep)}
+  .tracks{padding:clamp(4.5rem,11vw,9rem) 0;background:rgba(11,18,13,.9)}
   .tracks-head{text-align:center;margin-bottom:clamp(2.6rem,6vw,4rem)}
   .tracks-head .kicker{justify-content:center}
   .tracks-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,5vw,3.4rem);margin-top:1rem}
@@ -135,7 +137,7 @@
   .disc-meta .y .play{width:0;overflow:hidden;transition:width .5s var(--ease);white-space:nowrap;opacity:0}
   .disc:hover .disc-meta .y .play{width:72px;opacity:1}
 
-  .listen{padding:clamp(4rem,9vw,7rem) 0;text-align:center;background:var(--green)}
+  .listen{padding:clamp(4rem,9vw,7rem) 0;text-align:center;background:rgba(19,33,24,.83)}
   .listen h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.8rem,5vw,3rem);margin:1rem 0 2.4rem}
   .platforms{display:flex;flex-wrap:wrap;justify-content:center;gap:.9rem;max-width:760px;margin:0 auto}
   .platforms a{border:1px solid var(--line-strong);border-radius:100px;padding:.8rem 1.6rem;font-size:.8rem;letter-spacing:.06em;transition:all .35s var(--ease);display:flex;align-items:center;gap:.5rem;color:var(--bone)}
@@ -143,7 +145,7 @@
   .platforms a .dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
   .platforms a:hover .dot{background:var(--green-deep)}
 
-  .live{background:var(--green-deep);padding:clamp(4.5rem,11vw,9rem) 0}
+  .live{background:rgba(11,18,13,.9);padding:clamp(4.5rem,11vw,9rem) 0}
   .live-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin:1.2rem 0 2.6rem}
   .live-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,6vw,4rem);line-height:.98}
   .shows{border-top:1px solid var(--line)}
@@ -156,14 +158,14 @@
   .show:hover .cta{border-color:var(--gold);color:var(--gold-bright)}
   .live-note{margin-top:1.8rem;font-style:italic;font-family:var(--serif);color:var(--bone-dim)}
 
-  .records{position:relative;padding:clamp(5rem,13vw,10rem) 0;background:var(--green);overflow:hidden;text-align:center}
+  .records{position:relative;padding:clamp(5rem,13vw,10rem) 0;background:rgba(19,33,24,.8);overflow:hidden;text-align:center}
   .records .huge{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:400;font-size:clamp(6rem,26vw,24rem);color:rgba(198,161,91,.05);white-space:nowrap;pointer-events:none;font-style:italic}
   .records-inner{position:relative;z-index:2;max-width:640px;margin:0 auto}
   .records .kicker{justify-content:center}
   .records h2{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,6vw,3.6rem);margin:1.4rem 0}
   .records p{color:var(--bone-dim);font-size:1.05rem;margin-bottom:2rem}
 
-  footer{background:var(--green-deep);padding:clamp(4rem,9vw,7rem) 0 2.4rem}
+  footer{background:rgba(11,18,13,.92);padding:clamp(4rem,9vw,7rem) 0 2.4rem}
   .connect{display:grid;grid-template-columns:1fr;gap:2.6rem;align-items:end;margin-bottom:clamp(3rem,7vw,5rem)}
   @media(min-width:820px){.connect{grid-template-columns:1.4fr 1fr}}
   .connect h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,7vw,5rem);line-height:.98;letter-spacing:-.01em}
