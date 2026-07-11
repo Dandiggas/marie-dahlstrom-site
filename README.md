@@ -21,7 +21,7 @@ main.js         # nav, scroll reveals, hero parallax
 assets/
   marie-cover.jpg     # MARIE album cover (hero)
   portrait.mp4        # moving B&W portrait (About) — from her brand GIF, 336KB
-  hero-smoke.jpg      # ambient green-smoke backdrop
+  backdrop.jpg        # green portrait-muslin — the theme surface (fixed, behind everything)
   gold-dust.jpg       # album-panel texture
   covers/             # back-catalogue artwork
 ```
