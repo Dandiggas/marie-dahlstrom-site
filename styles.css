@@ -55,6 +55,16 @@
   .scrollcue{position:absolute;bottom:1.4rem;left:50%;transform:translateX(-50%);z-index:2;color:var(--bone-soft);font-size:.6rem;text-transform:uppercase;letter-spacing:.3em;display:flex;flex-direction:column;align-items:center;gap:.6rem}
   .scrollcue .bar{width:1px;height:34px;background:linear-gradient(var(--gold),transparent);animation:drop 2.4s var(--ease) infinite}
   @keyframes drop{0%{transform:scaleY(0);transform-origin:top}40%{transform:scaleY(1);transform-origin:top}60%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+  /* the cue is decoration: never let it sit on top of a CTA or eat a tap */
+  .scrollcue{pointer-events:none}
+  /* on phones it joins the flow under the buttons, so collision is impossible */
+  @media(max-width:760px){
+    .scrollcue{position:static;transform:none;margin-top:.4rem}
+    .hero{justify-content:flex-start;padding-bottom:clamp(2rem,6vh,3rem)}
+    /* three CTAs read as one stack on a phone, not a ragged pile */
+    .hero .actions{flex-direction:column;align-items:stretch;width:100%;max-width:340px;gap:.7rem}
+    .hero .actions .btn{justify-content:center}
+  }
 
   section{position:relative}
   .wrap{max-width:1240px;margin:0 auto;padding:0 clamp(1.2rem,5vw,3.4rem)}
@@ -63,6 +73,16 @@
   .btn{display:inline-flex;align-items:center;gap:.6rem;border-radius:100px;padding:.85rem 1.7rem;font-size:.76rem;text-transform:uppercase;letter-spacing:.18em;transition:all .35s var(--ease)}
   .btn-gold{background:var(--gold);color:var(--green-deep)}.btn-gold:hover{background:var(--gold-bright);transform:translateY(-3px)}
   .btn-ghost{border:1px solid var(--line-strong);color:var(--bone)}.btn-ghost:hover{border-color:var(--gold);color:var(--gold-bright)}
+  /* pending: the button's final shape, waiting on a URL. no hover lift, not clickable */
+  .btn.is-pending,.cta.is-pending{cursor:default;opacity:.62}
+  .btn.is-pending:hover,.cta.is-pending:hover{transform:none;background:var(--gold)}
+  .btn-ghost.is-pending:hover{background:none;border-color:var(--line-strong);color:var(--bone)}
+  .is-pending small{font-size:.62em;letter-spacing:.14em;opacity:.75;text-transform:uppercase}
+  .show .cta.is-pending{opacity:.55}.show:hover .cta.is-pending{border-color:var(--line);color:var(--bone-dim)}
+  /* text jump link under the CTA row */
+  .hero-jump{font-size:.68rem;text-transform:uppercase;letter-spacing:.22em;color:var(--bone-dim);border-bottom:1px solid var(--line);padding-bottom:.25rem;transition:all .3s}
+  .hero-jump:hover{color:var(--gold-bright);border-color:var(--gold)}
+  .album-jump{display:inline-block;margin-top:1.4rem}
 
   /* ---- new album feature ---- */
   .album{padding:clamp(4rem,10vw,8rem) 0;background:linear-gradient(180deg,rgba(19,33,24,.85),rgba(14,25,19,.9));border-top:1px solid var(--line);position:relative;overflow:hidden}
@@ -157,6 +177,17 @@
   .show .cta{font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:var(--bone-dim);border:1px solid var(--line);border-radius:100px;padding:.5rem 1.1rem;transition:all .3s}
   .show:hover .cta{border-color:var(--gold);color:var(--gold-bright)}
   .live-note{margin-top:1.8rem;font-style:italic;font-family:var(--serif);color:var(--bone-dim)}
+  .live-note a{color:var(--gold-bright);border-bottom:1px solid var(--gold-dim)}
+  .live-note a:hover{border-color:var(--gold-bright)}
+
+  .reviews{background:rgba(19,33,24,.55);padding:clamp(4.5rem,11vw,9rem) 0}
+  .quotes{display:grid;gap:clamp(1rem,2.4vw,1.8rem)}
+  @media(min-width:820px){.quotes{grid-template-columns:repeat(3,1fr)}}
+  .quote{border:1px solid var(--line);border-radius:2px;padding:clamp(1.4rem,3vw,2.2rem);background:rgba(11,18,13,.5)}
+  .quote blockquote{font-family:var(--serif);font-size:clamp(1rem,2vw,1.2rem);line-height:1.5;color:var(--bone)}
+  .quote blockquote::before{content:"\201C";color:var(--gold);font-size:2.2em;line-height:0;vertical-align:-.35em;margin-right:.15em}
+  .quote figcaption{margin-top:1.2rem;font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:var(--gold-bright)}
+  .quote figcaption span{display:block;margin-top:.35rem;letter-spacing:.1em;text-transform:none;color:var(--bone-dim)}
 
   .records{position:relative;padding:clamp(5rem,13vw,10rem) 0;background:rgba(19,33,24,.8);overflow:hidden;text-align:center}
   .records .huge{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:400;font-size:clamp(6rem,26vw,24rem);color:rgba(198,161,91,.05);white-space:nowrap;pointer-events:none;font-style:italic}

@@ -23,7 +23,8 @@
   <div class="nav-links" id="navlinks">
     <a href="#album">New Album</a>
     <a href="#music">Music</a>
-    <a href="#live">Live</a>
+    <a href="#live">Live &amp; Tickets</a>
+    <!-- <a href="#reviews">Reviews</a>  ← uncomment when the reviews section goes live -->
     <a href="#records">Records</a>
     <a href="https://mariedmusic.bandcamp.com" target="_blank" rel="noopener" class="nav-store">Store</a>
   </div>
@@ -38,10 +39,17 @@
     <div class="name" data-load="2">the new album</div>
     <div class="cover-stage" data-load="3"><img src="assets/marie-cover.jpg" alt="Marie Dahlstrøm — MARIE album cover"></div>
     <p class="tag" data-load="4">Her self-titled record — out 2026 on JFH Collective.</p>
+    <!-- THREE LINKS TO FILL when Marie sends them (25 Jul ask):
+         1. pre-save   → replace the pending span with <a class="btn btn-gold" href="PRESAVE_URL" target="_blank" rel="noopener">Pre-save ↗</a>
+         2. bandcamp pre-order → href="BANDCAMP_PREORDER_URL"
+         3. buy vinyl  → href="VINYL_URL"
+         Same three appear again in the #album section — update both. -->
     <div class="actions" data-load="5">
-      <a class="btn btn-gold" href="https://open.spotify.com/artist/49NfOTfSPhrb0sJBVYS1iM" target="_blank" rel="noopener">Pre-save ↗</a>
-      <a class="btn btn-ghost" href="#tracks">Tracklist</a>
+      <span class="btn btn-gold is-pending" aria-disabled="true">Pre-save <small>link soon</small></span>
+      <span class="btn btn-ghost is-pending" aria-disabled="true">Pre-order on Bandcamp <small>link soon</small></span>
+      <span class="btn btn-ghost is-pending" aria-disabled="true">Buy vinyl <small>link soon</small></span>
     </div>
+    <a class="hero-jump" data-load="5" href="#tracks">Tracklist ↓</a>
   </div>
   <div class="scrollcue"><span>Scroll</span><span class="bar"></span></div>
 </header>
@@ -53,9 +61,11 @@
       <h2 data-reveal data-d="1"><em>MARIE</em> — eleven songs, gold in the dark.</h2>
       <p data-reveal data-d="2">Her self-titled record moves between smoke and quiet light — soul recorded with a live band and a close circle of collaborators, mixed by Joshua Pleeter and mastered at TechnologyWorks. Out 2026 on JFH Collective.</p>
       <div class="actions" data-reveal data-d="3">
-        <a class="btn btn-gold" href="https://open.spotify.com/artist/49NfOTfSPhrb0sJBVYS1iM" target="_blank" rel="noopener">Pre-save ↗</a>
-        <a class="btn btn-ghost" href="#tracks">See the tracklist</a>
+        <span class="btn btn-gold is-pending" aria-disabled="true">Pre-save <small>link soon</small></span>
+        <span class="btn btn-ghost is-pending" aria-disabled="true">Pre-order on Bandcamp <small>link soon</small></span>
+        <span class="btn btn-ghost is-pending" aria-disabled="true">Buy vinyl <small>link soon</small></span>
       </div>
+      <a class="hero-jump album-jump" data-reveal data-d="3" href="#tracks">See the tracklist ↓</a>
     </div>
     <div class="album-visual" data-reveal data-d="2">
       <img src="assets/gold-dust.jpg" alt="">
@@ -105,6 +115,11 @@
     <div>
       <span class="kicker" data-reveal>The Artist</span>
       <h2 data-reveal data-d="1">Songs that feel <em>upbeat and mellow,</em> loud and quiet — all at once.</h2>
+      <!-- Marie's own bio copy, sent on WhatsApp 25 Jul. Added above the existing
+           press/awards paragraphs, nothing removed — pending her answer on whether
+           she wants it to replace them instead. -->
+      <p data-reveal data-d="2">Her third album <em>MARIE</em> arrives at a moment when life has become fuller, busier and infinitely more complex. Since her previous releases, Dahlstrøm has become a mother of two while continuing to build a life between London and Copenhagen.</p>
+      <p data-reveal data-d="2">Written over the past two years between London, Copenhagen and Los Angeles, the self-titled record draws on deeper jazz influences, live instrumentation and a close-knit international cast of collaborators, including Corey Fonville of acclaimed Richmond jazz collective Butcher Brown, Los Angeles pianist and producer Elijah Fox, Cuban percussionist Eliel Lazo, and her longtime collaborator (and partner in life) <span class="you">DanDiggas</span>, resulting in Dahlstrøm's warmest and most personal work to date.</p>
       <p data-reveal data-d="2">Marie Dahlstrøm splits her life between Copenhagen and London, writing and producing a strain of soul critics have called some of the most essential in underground R&amp;B. Praised by <em>Billboard</em>, <em>NPR</em>, <em>NYLON</em> and <em>Complex</em>, and a five-time winner at the Scandinavian Soul Music Awards.</p>
       <p data-reveal data-d="2">From her 2020 debut <em>Like Sand</em> to 2023's <em>A Good Life</em> and now the self-titled <em>MARIE</em>, her music trades in intimacy — a voice that does everything by seeming to do almost nothing at all.</p>
       <div class="sig" data-reveal data-d="3">— Marie</div>
@@ -165,20 +180,46 @@
 
 <section class="live" id="live">
   <div class="wrap">
-    <div class="live-head"><div><span class="kicker" data-reveal>On Tour</span><h2 data-reveal data-d="1">Live Dates</h2></div></div>
+    <div class="live-head"><div><span class="kicker" data-reveal>On Tour</span><h2 data-reveal data-d="1">Live Dates &amp; Tickets</h2></div></div>
+    <!-- THE 2 SHOWS TO FILL when Marie sends them (25 Jul ask): for each show swap
+         the date/venue/city text, then replace the pending span with
+         <a class="cta cta-gold" href="TICKET_URL" target="_blank" rel="noopener">Buy Tickets ↗</a> -->
     <div class="shows">
       <div class="show" data-reveal>
         <div class="date">TBA<small>2026</small></div>
-        <div class="venue">MARIE — album release show<span>Copenhagen · London · Europe</span></div>
-        <a class="cta" href="#connect">Notify me</a>
+        <div class="venue">MARIE — album release show<span>Venue and date announced soon</span></div>
+        <span class="cta is-pending" aria-disabled="true">Buy Tickets <small>soon</small></span>
       </div>
       <div class="show" data-reveal data-d="1">
         <div class="date">TBA<small>2026</small></div>
-        <div class="venue">Full-band soul show<span>Dates announcing soon</span></div>
-        <a class="cta" href="#connect">Notify me</a>
+        <div class="venue">MARIE — album release show<span>Venue and date announced soon</span></div>
+        <span class="cta is-pending" aria-disabled="true">Buy Tickets <small>soon</small></span>
       </div>
     </div>
-    <p class="live-note" data-reveal data-d="2">Dates are placeholders — wire this to Bandsintown or your calendar and shows populate automatically.</p>
+    <p class="live-note" data-reveal data-d="2">Two shows for the album. Tickets go on sale shortly — <a href="#connect">get on the list</a> and you'll hear first.</p>
+  </div>
+</section>
+
+<!-- REVIEWS — built, deliberately hidden until real quotes exist (Marie's 25 Jul voice note).
+     To publish: delete the `hidden` attribute below, fill each blockquote with the quote
+     and outlet, drop any unused cards, and uncomment the Reviews link in the nav. -->
+<section class="reviews" id="reviews" hidden>
+  <div class="wrap">
+    <div class="live-head"><div><span class="kicker" data-reveal>Press</span><h2 data-reveal data-d="1">What they're saying</h2></div></div>
+    <div class="quotes">
+      <figure class="quote" data-reveal>
+        <blockquote>Quote goes here.</blockquote>
+        <figcaption>Outlet<span>Reviewer name</span></figcaption>
+      </figure>
+      <figure class="quote" data-reveal data-d="1">
+        <blockquote>Quote goes here.</blockquote>
+        <figcaption>Outlet<span>Reviewer name</span></figcaption>
+      </figure>
+      <figure class="quote" data-reveal data-d="2">
+        <blockquote>Quote goes here.</blockquote>
+        <figcaption>Outlet<span>Reviewer name</span></figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
