@@ -107,6 +107,7 @@
   .sleeve{display:grid;grid-template-columns:1fr;gap:clamp(2.4rem,6vw,5rem);max-width:1080px;margin:0 auto}
   @media(min-width:820px){.sleeve{grid-template-columns:1fr 1fr}}
   .side-lbl{font-size:.72rem;text-transform:uppercase;letter-spacing:.5em;color:var(--gold);padding-bottom:1.1rem;margin-bottom:.4rem;border-bottom:1px solid var(--line)}
+  .side-lbl .side-dur{letter-spacing:.2em;color:var(--gold-dim);margin-left:.6rem}
   .trk{display:grid;grid-template-columns:auto 1fr;gap:1rem;padding:.95rem 0;border-bottom:1px solid var(--line);transition:padding-left .4s var(--ease),background .4s}
   .trk:hover{padding-left:.7rem;background:linear-gradient(90deg,rgba(198,161,91,.08),transparent)}
   .trk .num{font-family:var(--serif);font-size:1.1rem;color:var(--gold);min-width:1.6ch;font-variant-numeric:tabular-nums}
