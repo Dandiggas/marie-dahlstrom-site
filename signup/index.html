@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Bring Marie to your city</title>
+<meta name="description" content="Tell Marie Dahlstrøm where to play next. Leave your email and your city.">
+<meta property="og:title" content="Bring Marie to your city">
+<meta property="og:description" content="Tell Marie Dahlstrøm where to play next. Leave your email and your city.">
+<meta property="og:image" content="../assets/marie-cover.jpg">
+<meta name="theme-color" content="#0e1913">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body::before{background-image:url("../assets/backdrop.jpg")}
+  .su{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:clamp(2.5rem,8vh,5rem) 16px;
+    background:radial-gradient(120% 90% at 50% 20%,transparent 0%,rgba(8,14,10,.7) 75%)}
+  .su-card{width:100%;max-width:460px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:1.4rem}
+  .su-card .back{font-family:var(--serif);font-style:italic;font-size:1.15rem}
+  .su-card .back b{font-style:normal;font-weight:400}
+  .su-cover{width:min(200px,52vw);aspect-ratio:1/1;object-fit:cover;border-radius:2px;box-shadow:0 40px 80px -30px rgba(0,0,0,.85),0 0 0 1px rgba(233,226,212,.08)}
+  .su-card h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.1rem,8vw,3.2rem);line-height:1}
+  .su-card h1 em{color:var(--gold);font-style:italic}
+  .su-card .lede{color:var(--bone-soft);font-family:var(--serif);font-style:italic;font-size:1.05rem;max-width:34ch}
+  form{width:100%;display:flex;flex-direction:column;gap:.9rem;margin-top:.4rem;text-align:left}
+  label{font-size:.66rem;text-transform:uppercase;letter-spacing:.22em;color:var(--gold)}
+  input{width:100%;margin-top:.45rem;background:rgba(11,18,13,.72);border:1px solid var(--line-strong);border-radius:2px;color:var(--bone);
+    font:inherit;font-size:16px;padding:.9rem 1rem;transition:border-color .3s}
+  input::placeholder{color:var(--bone-dim);opacity:.7}
+  input:focus{outline:none;border-color:var(--gold)}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  form .btn{justify-content:center;border:none;cursor:pointer;font:inherit;font-size:.76rem;margin-top:.3rem}
+  form .btn[disabled]{opacity:.6;cursor:default;transform:none}
+  .msg{min-height:1.4em;font-family:var(--serif);font-style:italic;color:var(--bone-soft);text-align:center}
+  .msg.err{color:#e2a48f}
+  .done{display:none;flex-direction:column;align-items:center;gap:1rem}
+  .done h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.8rem,7vw,2.6rem)}
+  .done p{color:var(--bone-soft);font-family:var(--serif);font-style:italic}
+  .sent form{display:none}.sent .done{display:flex}
+  .fine{color:var(--bone-dim);font-size:.72rem;letter-spacing:.04em;max-width:38ch}
+</style>
+</head>
+<body>
+<svg class="grain"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.82" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+
+<main class="su">
+  <div class="su-card" id="card">
+    <a class="back" href="../"><b>Marie</b> Dahlstrøm</a>
+    <img class="su-cover" src="../assets/marie-cover.jpg" alt="MARIE album cover">
+    <h1>Bring Marie to <em>your city</em></h1>
+    <p class="lede">Tell me where you want me to play next. Leave your email and I'll let you know when I'm coming.</p>
+
+    <form id="f" novalidate>
+      <div>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required>
+      </div>
+      <div>
+        <label for="city">Your city</label>
+        <input id="city" name="city" type="text" autocomplete="address-level2" placeholder="e.g. Manchester" maxlength="80" required>
+      </div>
+      <div class="hp" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+      <button class="btn btn-gold" id="go" type="submit">Sign me up</button>
+      <p class="msg" id="msg" role="status" aria-live="polite"></p>
+    </form>
+
+    <div class="done" role="status">
+      <h2>You're on the list</h2>
+      <p id="thanks">Thank you. I'll be in touch.</p>
+      <a class="btn btn-ghost" href="../">Hear the new album</a>
+    </div>
+
+    <p class="fine">Your email is only used to tell you about Marie Dahlstrøm shows and releases.</p>
+  </div>
+</main>
+
+<script>
+  // The Apps Script web app that writes each sign-up to the Google Sheet (apps-script/Code.gs).
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbxqfVen77co5IFzWFl-v6JBri4Fejlqi8s1kAfAgdDL5OAbXj-DvTfDg5QQYZu7weoY/exec";
+  const f = document.getElementById('f'), go = document.getElementById('go'), msg = document.getElementById('msg');
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const say = (t, err) => { msg.textContent = t; msg.classList.toggle('err', !!err); };
+
+  f.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = f.email.value.trim(), city = f.city.value.trim();
+    if (!EMAIL_RE.test(email)) { say('Please check your email address.', true); f.email.focus(); return; }
+    if (!city) { say('Which city should I play in?', true); f.city.focus(); return; }
+
+    go.disabled = true; go.textContent = 'Sending…'; say('');
+    // A plain form-encoded POST is a "simple" request, so the browser sends it
+    // without a CORS preflight, which Apps Script cannot answer.
+    const body = new URLSearchParams({ email, city, website: f.website.value,
+      source: new URLSearchParams(location.search).get('src') || document.referrer || 'direct' });
+    try {
+      const r = await fetch(ENDPOINT, { method: 'POST', body });
+      const j = await r.json();
+      if (!j.ok) throw new Error(j.error || 'failed');
+      document.getElementById('thanks').textContent = `Thank you. I'll let you know if I come to ${city}.`;
+      document.getElementById('card').classList.add('sent');
+    } catch (err) {
+      say('Something went wrong. Please try again in a moment.', true);
+      go.disabled = false; go.textContent = 'Sign me up';
+    }
+  });
+</script>
+</body>
+</html>
