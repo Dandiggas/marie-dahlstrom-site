@@ -222,3 +222,7 @@
   .hero [data-load="1"]{animation-delay:.3s}.hero [data-load="2"]{animation-delay:.5s}.hero [data-load="3"]{animation-delay:.78s}.hero [data-load="4"]{animation-delay:1.05s}.hero [data-load="5"]{animation-delay:1.25s}
   @keyframes load{to{opacity:1;transform:none;filter:blur(0)}}
   @media (prefers-reduced-motion:reduce){*,*::after,*::before{animation-duration:.001s!important;transition:none!important}[data-reveal]{opacity:1;transform:none}.hero [data-load]{opacity:1;transform:none;filter:none}.hero-bg{animation:none;transform:scale(1.04)}.cover-stage{animation:none}}
+
+/* Live section with no dates on sale: sign-up call to action (12 Oct 2026) */
+.live h2 em{color:var(--gold);font-style:italic}
+.live .live-actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem}
